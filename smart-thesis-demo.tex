@@ -1,11 +1,25 @@
-\documentclass[a4paper,10pt]{memoir}
+\documentclass[a4paper,11pt]{memoir}
+
+\ifpdf
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\fi
 
 \usepackage[english]{babel}
-\usepackage{blindtext}
 
+% This is the only file needed for actually using the smart-thesis style
 \input{style}
+
+% Contains some packages and macros which are commonly used in a thesis.
+% Note that these are optional.
 \input{common-packages}
 \input{common-macros}
+
+% These packages are only used in the demo and not really
+% required for smart-thesis
+\usepackage{blindtext}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
 
 \title{Smart Thesis Demo}
 \author{Jan Philip Göpfert, Andreas Stöckel}
@@ -24,13 +38,52 @@
 
 \chapter{A multitude of tests}
 
-\Blindtext
+\epigraph{Science is what we understand well enough to explain to a computer. Art is everything else we do.}{Donald E. Knuth}
 
+\blindtext
+
+\section{Some math}
+
+Here follows some tests for typesetting math. Note how we use the \texttt{\\marginnote} command to add some pretty notes which appear in the margin. This is quite nice, as it allows a more narrow width of the text body without the page looking too sparse\footnote{This is a footnote}.
 \marginnote{This formula is also known as \emph{Pythagorean Theorem}, albeit it is usually written with the variables $a$, $b$, and $c$.}
-
 \begin{align}
-  z^2 &= x^2 + y^2
+  z^2 &= x^2 + y^2 \\
+  z &= \sqrt{x^2 + y^2}
 \end{align}
+\marginnote{Did you know? The discrete fourier transfortmation shown in equation \ref{eqn:dft} is the backbone of the modern information-society.}
+And here comes some more\footnote{More is always better!}:
+\begin{align}
+	f_m =  \sum_{k=0}^{2n-1} x_k \, e^{-\frac{2\pi i}{2n} mk } \label{eqn:dft}
+\qquad
+m = 0,\dotsc,2n-1
+\end{align}
+
+\begin{figure}
+	\centering % @Jan: What package did you use for auto-centering of figures?
+	\begin{tikzpicture}
+		\begin{axis}[
+			axis lines=left,
+			scaled ticks=false,
+			xticklabel style={
+				rotate=90,
+				anchor=east,
+				/pgf/number format/precision=3,
+				/pgf/number format/fixed,
+				/pgf/number format/fixed zerofill,
+			},
+		]
+		% density of Normal distribution:
+		\newcommand\MU{0}
+		\newcommand\SIGMA{0.1}
+		\addplot[red,domain=-3*\SIGMA:3*\SIGMA,samples=201]
+		{exp(-(x-\MU)^2 / 2 / \SIGMA^2)
+			/ (\SIGMA * sqrt(2*pi))};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Gaussian distribution. This plot shows a guassian distribution with mean $\mu = 0$ and standard deviation $\sigma = 0.1$. As clearly visible, the value of the distribution never reaches zero.}
+	\label{fig:gaussian_distr}
+\end{figure}
+
 
 \section{Even more tests}
 
@@ -38,12 +91,53 @@
 
 \subsection{A test of three parts}
 
+\marginnote{Blood-red were his spurs i' the golden noon; wine-red was his velvet coat, when they shot him down on the highway, down like a dog on the highway, and he lay in his blood on the highway, with the bunch of lace at his throat.}
+
 \blindtext
 
 \chapter{Another test chapter}
 
-\marginnote{Yes, this is just a test. If you read this, you are doomed.}
+\epigraph{To test is to live. To believe is to die.}{Anonymous Heretic}
 
-\Blindtext
+\marginnote{Yes, this is just a test. If you read this, you are most likely doomed.}
+
+\blindtext
+
+\section{The Throat of the World}
+
+\marginnote{Margin notes help to add structure to long runs of text}
+
+\blindtext
+
+\marginnote{Here we start testing various types of lists}
+
+\blindlistlist[2]{itemize}
+
+\section{The Silence Has Been Broken}
+
+\blindtext
+
+\blindlistlist[2]{enumerate}
+
+\blindtext
+
+\section{Discerning the Transmundane}
+
+\marginnote{You can even add small formulas, like this one:
+\begin{align*}
+\sum_{i=1}^{n} i &= n \cdot \frac{n + 1}2
+\end{align*}}
+
+\blindtext
+
+\subsection{Composure, Speed, and Precision}
+
+\marginnote{Or this one:
+\begin{align*}
+E &= mc^2
+\end{align*}}
+
+\blindtext
+
 
 \end{document}

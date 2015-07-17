@@ -1,4 +1,4 @@
-TEX = xelatex -interaction=nonstopmode
+TEX = pdflatex -interaction=nonstopmode
 MAIN = smart-thesis-demo
 BIB = biber
 IDX = makeglossaries
@@ -16,4 +16,4 @@ smart-thesis-demo.pdf: *.tex
 #	$(TEX) $(MAIN)
 
 clean:
-	rm -f *~ *.pdf *.aux *.log *.glg *.glo *.gls *.ist *.out *.tdo *.toc *.bbl *.bcf *.blg *.run.xml
+	rm -f *~ *.pdf *.aux *.log *.glg *.glo *.gls *.ist *.out *.tdo *.toc *.bbl *.bcf *.blg *.run.xml *.backup

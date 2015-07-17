@@ -76,27 +76,51 @@
 % Germany.
 %
 
+
+%
+% EXTERNAL PACKAGES
+%
+\usepackage{xcolor}
+\usepackage[expansion=false]{microtype}
+
+%
+% FONT DEFINITIONS
+%
+
+% Use the following code for XeLaTeX
+\ifxetex
+
 % Load the texgyrepagella font as main font and set the ``mathpazo'' font as
 % math font
 \usepackage{fontspec}
 \usepackage{mathpazo}
-\setmainfont
-     [ BoldFont       = texgyrepagella-bold.otf ,
-       ItalicFont     = texgyrepagella-italic.otf ,
-       BoldItalicFont = texgyrepagella-bolditalic.otf,
-       Numbers={OldStyle} ]
-     {texgyrepagella-regular.otf}
-
-
-\renewcommand{\baselinestretch}{1.5}
-
-\usepackage[protrusion=true]{microtype}% Improves type setting. Requires a proper font.
+\setmainfont%
+	[%
+		BoldFont       = texgyrepagella-bold.otf,
+		ItalicFont     = texgyrepagella-italic.otf,
+		BoldItalicFont = texgyrepagella-bolditalic.otf,
+		Numbers={OldStyle}
+	]%
+	{texgyrepagella-regular.otf}
 \DeclareRobustCommand{\spacedallcaps}[1]{%
-  \addfontfeature{LetterSpace=15,WordSpace=1.25}{\MakeTextUppercase{#1}}%
+	\addfontfeature{LetterSpace=15,WordSpace=1.25}{\MakeTextUppercase{#1}}%
 }%
 \DeclareRobustCommand{\spacedlowsmallcaps}[1]{%
-  \textsc{\addfontfeature{LetterSpace=15,WordSpace=1.25}{\MakeTextLowercase{#1}}}
+	\textsc{\addfontfeature{LetterSpace=15,WordSpace=1.25}{\MakeTextLowercase{#1}}}
 }%
+\fi
+
+% Use the following code for pdfLaTex
+\ifpdf
+\usepackage[osf,sc]{mathpazo}
+
+\DeclareRobustCommand{\spacedallcaps}[1]{\textls[160]{\textsc{\MakeTextUppercase{#1}}}}%
+\DeclareRobustCommand{\spacedlowsmallcaps}[1]{\textls[80]{\textsc{\MakeTextLowercase{#1}}}}%
+\fi
+
+% Increase linespread for Palatino
+\renewcommand{\linespread}{1.05}
+
 %
 % COLOR DEFINITIONS
 %
@@ -105,110 +129,125 @@
 \definecolor{webgreen}{rgb}{0,.5,0}
 \definecolor{webbrown}{rgb}{.6,0,0}
 
+%
+% SECTIONING STYLES (toledo)
+%
+
+% See http://tex.stackexchange.com/questions/161577/memoir-hangnum-chapter-number-in-right-margin-switch for the inspiration
 
 \makeatletter
 \makechapterstyle{toledo}{%
-  \chapterstyle{default}
-  \renewcommand*{\chapterheadstart}{}
-  \renewcommand*{\printchaptername}{%
-    \centerline{\chapnumfont{\@chapapp\ \thechapter}}}
-  \renewcommand*{\chapternamenum}{}
-  \renewcommand*{\chapnumfont}{\normalfont\scshape\MakeTextLowercase}
-  \renewcommand*{\printchapternum}{}
-  \renewcommand*{\afterchapternum}{%
-    \par\centerline{\parbox{0.5in}{\hrulefill}}\par}
-  \renewcommand*{\printchapternonum}{%
-    \vphantom{\chapnumfont \@chapapp 1}\par 
-    \parbox{0.5in}{}\par}
-  \renewcommand*{\chaptitlefont}{\normalfont\large}
-  \renewcommand*{\printchaptertitle}[1]{%
-    \centering \chaptitlefont\spacedallcaps{##1}}}
+	\chapterstyle{default}
 
-\nouppercaseheads
-\makepagestyle{berlin}
-\makeevenfoot{berlin}{\thepage}{}{}
-\makeoddfoot{berlin}{}{}{\thepage}
+	\renewcommand*{\chapterheadstart}{\vspace*{0.0cm}}
 
-\copypagestyle{chapter}{berlin}
+	\renewcommand*{\chapnumfont}{\normalfont\color{halfgray}\addfontfeature{SizeFeatures={Size=110}}}
+	\newfont{\chapterNumber}{eurb10 scaled 7000}
+	\renewcommand*{\chapnumfont}{\chapterNumber\color{halfgray}}
+	\renewcommand*{\printchaptername}{}
+	\renewcommand*{\chapternamenum}{}
+	\renewcommand*{\printchapternum}{%
+		\raisebox{0pt}[0pt][0pt]{%
+		\makebox[0pt][l]{%
+		\makebox[\dimexpr\textwidth+7em\relax][l]{%
+			\parbox[t]{\textwidth}{\mbox{}}%
+			\parbox[t]{7em}{\hfill\chapnumfont \thechapter}}}}}%
+	\renewcommand*{\chapternamenum}{}
+	\renewcommand*{\afterchapternum}{}
 
-%\if@twoside
-    \makepsmarks{berlin}{%
-      \def\chaptermark##1{%
-        \markboth{\memUChead{%
-          \ifnum \c@secnumdepth >\m@ne
-            \if@mainmatter
-              \@chapapp\ \thechapter. \ %
-            \fi
-          \fi
-          ##1}}{}}%
-      \def\tocmark{\markboth{\memUChead{\contentsname}}{\memUChead{\contentsname}}}%
-      \def\lofmark{\markboth{\memUChead{\listfigurename}}{\memUChead{\listfigurename}}}%
-      \def\lotmark{\markboth{\memUChead{\listtablename}}{\memUChead{\listtablename}}}%
-      \def\bibmark{\markboth{\memUChead{\bibname}}{\memUChead{\bibname}}}%
-      \def\indexmark{\markboth{\memUChead{\indexname}}{\memUChead{\indexname}}}%
-      \def\sectionmark##1{%
-        \markright{\memUChead{%
-          \ifnum \c@secnumdepth > \z@
-            \thesection. \ %
-          \fi
-          ##1}}}}
-    \makepsmarks{berlin}{%
-      \createmark{chapter}{left}{nonumber}{}{}
-      \createmark{section}{right}{shownumber}{}{. \ }
-      \createplainmark{toc}{both}{\contentsname}
-      \createplainmark{lof}{both}{\listfigurename}
-      \createplainmark{lot}{both}{\listtablename}
-      \createplainmark{bib}{both}{\bibname}
-      \createplainmark{index}{both}{\indexname}
-      \createplainmark{glossary}{both}{\glossaryname}
-    }
-    \makeevenhead{berlin}{\spacedlowsmallcaps{\leftmark}}{}{}
-    \makeoddhead{berlin}{}{}{\spacedlowsmallcaps{\rightmark}}
-%\else
-%    \makepsmarks{berlin}{%
-%      \def\chaptermark##1{%
-%        \markright{\memUChead{%
-%          \ifnum \c@secnumdepth >\m@ne
-%            \if@mainmatter
-%              \@chapapp\ \thechapter. \ %
-%            \fi
-%          \fi
-%          ##1}}}%
-%      \def\tocmark{\markright{\memUChead{\contentsname}}}%
-%      \def\lofmark{\markright{\memUChead{\listfigurename}}}%
-%      \def\lotmark{\markright{\memUChead{\listtablename}}}%
-%      \def\bibmark{\markright{\memUChead{\bibname}}}%
-%      \def\indexmark{\markright{\memUChead{\indexname}}}}
-%    \makepsmarks{berlin}{%
-%      \createmark{chapter}{right}{shownumber}{\@chapapp\ }{. \ }
-%      \createplainmark{toc}{right}{\contentsname}
-%      \createplainmark{lof}{right}{\listfigurename}
-%      \createplainmark{lot}{right}{\listtablename}
-%      \createplainmark{bib}{right}{\bibname}
-%      \createplainmark{index}{right}{\indexname}
-%      \createplainmark{glossary}{right}{\glossaryname}
-%    }
-%    \makeoddhead{berlin}{\slshape\rightmark}{}{}
-%\fi
-
+	\renewcommand*{\afterchaptertitle}{\vspace*{.4\baselineskip}%
+	\par\parbox{\textwidth}{\hrulefill}\par%
+	\vspace*{.5\baselineskip}}
+	\renewcommand*{\chaptitlefont}{\normalfont\large}
+	\renewcommand*{\printchaptertitle}[1]{\chaptitlefont\spacedallcaps{##1}}
+}
 \makeatother
 
 \chapterstyle{toledo}
-\pagestyle{berlin}
 
+%
+% MARGINNOTE
+%
+
+% Define the "marginnote" command. For compatibility reasons
+% we do not override marginpar
 \strictpagecheck
 \newcommand{\marginnote}[1]{\marginpar{
-  \renewcommand{\baselinestretch}{1.25}
-  \small
-  \itshape
-  \checkoddpage
-  \ifoddpage
-    \raggedright
-  \else
-    \raggedleft
-  \fi
-  {#1}
+	\slshape\footnotesize
+	\checkoddpage
+	\ifoddpage
+		\raggedright
+	\else
+		\raggedleft
+	\fi
+	{#1}
 }}
+
+%
+% PAGE STYLE (headers, footers)
+%
+
+\makeatletter
+
+% Deactivate capitalization of headers
+\nouppercaseheads
+
+% Define the new "berlin" style
+\makepagestyle{berlin}
+
+% Display the page number in the footer
+\makeevenfoot{berlin}{\thepage}{}{}
+\makeoddfoot{berlin}{}{}{\thepage}
+
+% Override the chapter style with the unfinished "berlin" style
+% to eliminate the header and to make sure a consistent footer
+% style is used
+\copypagestyle{chapter}{berlin}
+
+% Define the "berlin" style
+\makepsmarks{berlin}{%
+	\def\chaptermark##1{%
+	\markboth{\memUChead{%
+		\ifnum \c@secnumdepth >\m@ne
+		\if@mainmatter
+			\@chapapp\ \thechapter. \ %
+		\fi
+		\fi
+		##1}}{}}%
+	\def\tocmark{\markboth{\memUChead{\contentsname}}{\memUChead{\contentsname}}}%
+	\def\lofmark{\markboth{\memUChead{\listfigurename}}{\memUChead{\listfigurename}}}%
+	\def\lotmark{\markboth{\memUChead{\listtablename}}{\memUChead{\listtablename}}}%
+	\def\bibmark{\markboth{\memUChead{\bibname}}{\memUChead{\bibname}}}%
+	\def\indexmark{\markboth{\memUChead{\indexname}}{\memUChead{\indexname}}}%
+	\def\sectionmark##1{%
+	\markright{\memUChead{%
+		\ifnum \c@secnumdepth > \z@
+		\thesection. \ %
+		\fi %
+		##1}}}}
+\makepsmarks{berlin}{%
+	\createmark{chapter}{left}{nonumber}{}{}
+	\createmark{section}{right}{shownumber}{}{. \ }
+	\createplainmark{toc}{both}{\contentsname}
+	\createplainmark{lof}{both}{\listfigurename}
+	\createplainmark{lot}{both}{\listtablename}
+	\createplainmark{bib}{both}{\bibname}
+	\createplainmark{index}{both}{\indexname}
+	\createplainmark{glossary}{both}{\glossaryname}
+}
+
+% Discriminate between "oneside" and "twoside" documents
+\if@twoside
+	\makeevenhead{berlin}{\spacedlowsmallcaps{\leftmark}}{}{}
+	\makeoddhead{berlin}{}{}{\spacedlowsmallcaps{\rightmark}}
+\else
+	\makeoddhead{berlin}{\spacedlowsmallcaps{\rightmark}}{}{}
+\fi
+
+% Use the berlin style
+\pagestyle{berlin}
+
+\makeatother
 
 %
 % FOOTNOTES

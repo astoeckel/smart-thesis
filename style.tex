@@ -1,0 +1,133 @@
+% Load the texgyrepagella font as main font and set the ``mathpazo'' font as
+% math font
+\usepackage{fontspec}
+\usepackage{mathpazo}
+\setmainfont
+     [ BoldFont       = texgyrepagella-bold.otf ,
+       ItalicFont     = texgyrepagella-italic.otf ,
+       BoldItalicFont = texgyrepagella-bolditalic.otf,
+       Numbers={OldStyle} ]
+     {texgyrepagella-regular.otf}
+
+
+\renewcommand{\baselinestretch}{1.5}
+
+\usepackage[protrusion=true]{microtype}% Improves type setting. Requires a proper font.
+\DeclareRobustCommand{\spacedallcaps}[1]{%
+  \addfontfeature{LetterSpace=15,WordSpace=1.25}{\MakeTextUppercase{#1}}%
+}%
+\DeclareRobustCommand{\spacedlowsmallcaps}[1]{%
+  \textsc{\addfontfeature{LetterSpace=15,WordSpace=1.25}{\MakeTextLowercase{#1}}}
+}%
+
+\makeatletter
+\makechapterstyle{toledo}{%
+  \chapterstyle{default}
+  \renewcommand*{\chapterheadstart}{}
+  \renewcommand*{\printchaptername}{%
+    \centerline{\chapnumfont{\@chapapp\ \thechapter}}}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\chapnumfont}{\normalfont\scshape\MakeTextLowercase}
+  \renewcommand*{\printchapternum}{}
+  \renewcommand*{\afterchapternum}{%
+    \par\centerline{\parbox{0.5in}{\hrulefill}}\par}
+  \renewcommand*{\printchapternonum}{%
+    \vphantom{\chapnumfont \@chapapp 1}\par 
+    \parbox{0.5in}{}\par}
+  \renewcommand*{\chaptitlefont}{\normalfont\large}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \centering \chaptitlefont\spacedallcaps{##1}}}
+
+\nouppercaseheads
+\makepagestyle{berlin}
+\makeevenfoot{berlin}{\thepage}{}{}
+\makeoddfoot{berlin}{}{}{\thepage}
+
+\copypagestyle{chapter}{berlin}
+
+%\if@twoside
+    \makepsmarks{berlin}{%
+      \def\chaptermark##1{%
+        \markboth{\memUChead{%
+          \ifnum \c@secnumdepth >\m@ne
+            \if@mainmatter
+              \@chapapp\ \thechapter. \ %
+            \fi
+          \fi
+          ##1}}{}}%
+      \def\tocmark{\markboth{\memUChead{\contentsname}}{\memUChead{\contentsname}}}%
+      \def\lofmark{\markboth{\memUChead{\listfigurename}}{\memUChead{\listfigurename}}}%
+      \def\lotmark{\markboth{\memUChead{\listtablename}}{\memUChead{\listtablename}}}%
+      \def\bibmark{\markboth{\memUChead{\bibname}}{\memUChead{\bibname}}}%
+      \def\indexmark{\markboth{\memUChead{\indexname}}{\memUChead{\indexname}}}%
+      \def\sectionmark##1{%
+        \markright{\memUChead{%
+          \ifnum \c@secnumdepth > \z@
+            \thesection. \ %
+          \fi
+          ##1}}}}
+    \makepsmarks{berlin}{%
+      \createmark{chapter}{left}{nonumber}{}{}
+      \createmark{section}{right}{shownumber}{}{. \ }
+      \createplainmark{toc}{both}{\contentsname}
+      \createplainmark{lof}{both}{\listfigurename}
+      \createplainmark{lot}{both}{\listtablename}
+      \createplainmark{bib}{both}{\bibname}
+      \createplainmark{index}{both}{\indexname}
+      \createplainmark{glossary}{both}{\glossaryname}
+    }
+    \makeevenhead{berlin}{\spacedlowsmallcaps{\leftmark}}{}{}
+    \makeoddhead{berlin}{}{}{\spacedlowsmallcaps{\rightmark}}
+%\else
+%    \makepsmarks{berlin}{%
+%      \def\chaptermark##1{%
+%        \markright{\memUChead{%
+%          \ifnum \c@secnumdepth >\m@ne
+%            \if@mainmatter
+%              \@chapapp\ \thechapter. \ %
+%            \fi
+%          \fi
+%          ##1}}}%
+%      \def\tocmark{\markright{\memUChead{\contentsname}}}%
+%      \def\lofmark{\markright{\memUChead{\listfigurename}}}%
+%      \def\lotmark{\markright{\memUChead{\listtablename}}}%
+%      \def\bibmark{\markright{\memUChead{\bibname}}}%
+%      \def\indexmark{\markright{\memUChead{\indexname}}}}
+%    \makepsmarks{berlin}{%
+%      \createmark{chapter}{right}{shownumber}{\@chapapp\ }{. \ }
+%      \createplainmark{toc}{right}{\contentsname}
+%      \createplainmark{lof}{right}{\listfigurename}
+%      \createplainmark{lot}{right}{\listtablename}
+%      \createplainmark{bib}{right}{\bibname}
+%      \createplainmark{index}{right}{\indexname}
+%      \createplainmark{glossary}{right}{\glossaryname}
+%    }
+%    \makeoddhead{berlin}{\slshape\rightmark}{}{}
+%\fi
+
+\makeatother
+
+\chapterstyle{toledo}
+\pagestyle{berlin}
+
+\strictpagecheck
+\newcommand{\marginnote}[1]{\marginpar{
+  \renewcommand{\baselinestretch}{1.25}
+  \small
+  \itshape
+  \checkoddpage
+  \ifoddpage
+    \raggedright
+  \else
+    \raggedleft
+  \fi
+  {#1}
+}}
+
+\settypeblocksize{23.45cm}{11.85cm}{*}
+%\setheaderspaces{1.29cm}{1cm}{*}
+%\setheadfoot{1cm}{1cm}
+\setulmargins{*}{*}{*}
+\setmarginnotes{.6cm}{3.3cm}{1cm}
+\checkandfixthelayout
+

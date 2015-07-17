@@ -1,0 +1,16 @@
+*~
+*.pdf
+*.aux
+*.log
+*.glg
+*.glo
+*.gls
+*.ist
+*.out
+*.tdo
+*.toc
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.kate-swp

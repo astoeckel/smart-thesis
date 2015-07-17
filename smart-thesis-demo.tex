@@ -1,0 +1,49 @@
+\documentclass[a4paper,10pt]{memoir}
+
+\usepackage[english]{babel}
+\usepackage{blindtext}
+
+\input{style}
+\input{common-packages}
+\input{common-macros}
+
+\title{Smart Thesis Demo}
+\author{Jan Philip Göpfert, Andreas Stöckel}
+
+\begin{document}
+
+\frontmatter
+
+\begin{titlingpage}
+  \maketitle
+\end{titlingpage}
+
+\tableofcontents
+
+\mainmatter
+
+\chapter{A multitude of tests}
+
+\Blindtext
+
+\marginnote{This formula is also known as \emph{Pythagorean Theorem}, albeit it is usually written with the variables $a$, $b$, and $c$.}
+
+\begin{align}
+  z^2 &= x^2 + y^2
+\end{align}
+
+\section{Even more tests}
+
+\blindtext
+
+\subsection{A test of three parts}
+
+\blindtext
+
+\chapter{Another test chapter}
+
+\marginnote{Yes, this is just a test. If you read this, you are doomed.}
+
+\Blindtext
+
+\end{document}

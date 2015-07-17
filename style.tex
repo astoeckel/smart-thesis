@@ -212,6 +212,37 @@
 \setlength{\footparindent}{0em}
 
 %
+% EPIGRAPHS
+%
+\makeatletter
+
+% Make the epigraph span two third of the text width
+\setlength{\epigraphwidth}{0.66\textwidth}
+
+% Disable the rule below the epigraph
+\setlength{\epigraphrule}{0pt}
+
+% Use the normal font size
+\epigraphfontsize{\normalsize}
+
+% Style the epigraph itself -- use italic text and
+% flush it to the right
+\newenvironment{epigraphstyle}{\slshape\raggedleft}{}
+\epigraphtextposition{epigraphstyle}
+
+% Style the epigraph source -- prepend it with a em-dash
+% and make sure no indentation is added after the epigraph
+\newenvironment{epigraphsourcestyle}%
+{%
+	--- \raggedleft\color{webgreen}%
+}{%
+	\@afterindentfalse\@afterheading%
+}
+\epigraphsourceposition{epigraphsourcestyle}
+
+\makeatother
+
+%
 % PAGE LAYOUT
 %
 \settypeblocksize{23.45cm}{11.85cm}{*}

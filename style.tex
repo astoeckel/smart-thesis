@@ -80,8 +80,8 @@
 %
 % EXTERNAL PACKAGES
 %
-\usepackage{xcolor}
-\usepackage[expansion=false]{microtype}
+\usepackage[usenames,dvipsnames,svgnames]{xcolor}
+\usepackage[expansion=true]{microtype}
 
 %
 % FONT DEFINITIONS
@@ -170,7 +170,7 @@
 %
 
 % Define the "marginnote" command. For compatibility reasons
-% we do not override marginpar
+% we do not override marginpar.
 \strictpagecheck
 \newcommand{\marginnote}[1]{\marginpar{
 	\slshape\footnotesize
@@ -189,19 +189,19 @@
 
 \makeatletter
 
-% Deactivate capitalization of headers
+% Deactivate capitalization of headers.
 \nouppercaseheads
 
-% Define the new "berlin" style
+% Define the new "berlin" style.
 \makepagestyle{berlin}
 
-% Display the page number in the footer
+% Display the page number in the footer.
 \makeevenfoot{berlin}{\thepage}{}{}
 \makeoddfoot{berlin}{}{}{\thepage}
 
 % Override the chapter style with the unfinished "berlin" style
 % to eliminate the header and to make sure a consistent footer
-% style is used
+% style is used.
 \copypagestyle{chapter}{berlin}
 
 % Define the "berlin" style
@@ -236,7 +236,7 @@
 	\createplainmark{glossary}{both}{\glossaryname}
 }
 
-% Discriminate between "oneside" and "twoside" documents
+% Discriminate between "oneside" and "twoside" documents.
 \if@twoside
 	\makeevenhead{berlin}{\spacedlowsmallcaps{\leftmark}}{}{}
 	\makeoddhead{berlin}{}{}{\spacedlowsmallcaps{\rightmark}}
@@ -244,7 +244,7 @@
 	\makeoddhead{berlin}{\spacedlowsmallcaps{\rightmark}}{}{}
 \fi
 
-% Use the berlin style
+% Use the berlin style.
 \pagestyle{berlin}
 
 \makeatother

@@ -7,7 +7,7 @@
 
 \usepackage[english]{babel}
 
-% This is the only file needed for actually using the smart-thesis style
+% This is the only file needed for actually using the smart-thesis style.
 \input{style}
 
 % Contains some packages and macros which are commonly used in a thesis.
@@ -15,11 +15,18 @@
 \input{common-packages}
 \input{common-macros}
 
-% These packages are only used in the demo and not really
-% required for smart-thesis
+% These packages are only used in the demo and not necessarily
+% required for smart-thesis.
 \usepackage{blindtext}
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.10}
+\pgfplotsset{compat=1.8}
+
+% Loads bibliography for citations.
+\addbibresource{demo-bibliography.bib}
+
+% Starts creation of a glossary.
+\makeglossaries
+\input{demo-glossary}
 
 \title{Smart Thesis Demo}
 \author{Jan Philip Göpfert, Andreas Stöckel}
@@ -50,13 +57,15 @@ Here follows some tests for typesetting math. Note how we use the \texttt{\\marg
   z^2 &= x^2 + y^2 \\
   z &= \sqrt{x^2 + y^2}
 \end{align}
-\marginnote{Did you know? The discrete fourier transfortmation shown in equation \ref{eqn:dft} is the backbone of the modern information-society.}
+\marginnote{Did you know? The discrete fourier transformation shown in equation \ref{eqn:dft} is the backbone of the modern information-society.}
 And here comes some more\footnote{More is always better!}:
 \begin{align}
 	f_m =  \sum_{k=0}^{2n-1} x_k \, e^{-\frac{2\pi i}{2n} mk } \label{eqn:dft}
 \qquad
 m = 0,\dotsc,2n-1
 \end{align}
+
+For of science, see \cite{botsch2010polygon}. Unfortunately, that book has nothing about \glspl{wolf}.
 
 \begin{figure}
 	\centering % @Jan: What package did you use for auto-centering of figures?
@@ -103,6 +112,16 @@ m = 0,\dotsc,2n-1
 
 \blindtext
 
+\begin{figure}
+  \includegraphics[width=8cm]{demo}
+  \caption{Truly a fine canister, comparable only to \gls{mjollnir}.}
+  \label{fig:canister}
+\end{figure}
+
+\Blindtext\Blindtext
+
+A picture says more than a thousand words (see \ref{fig:canister}).
+
 \section{The Throat of the World}
 
 \marginnote{Margin notes help to add structure to long runs of text}
@@ -139,5 +158,8 @@ E &= mc^2
 
 \blindtext
 
+\backmatter
+\printglossaries
+\printbibliography[heading=bibintoc]
 
 \end{document}

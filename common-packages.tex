@@ -1,3 +1,32 @@
-\usepackage{latexsym,amsmath,amssymb,amsthm,amscd} % Provides math enviroments
-% Not needed with document class 'amsart', or other 'ams' classes.
+\usepackage{csquotes} % Context sensitive quotation facilities. Recommended by babel and should be loaded before babel.
+
+\usepackage[english]{babel} % Sets the language used. Essential for proper hyphenation. Translates key words like 'figure' or 'table'. Note that 'english' is American English.
+
+\usepackage{latexsym,amsmath,amssymb,amsthm,amscd} % Provides math enviroments, math symbols and more things useful for math.
+
+\usepackage{mathtools} % Enhances amsmath and provides further mathematical tools.
+
+\usepackage{graphicx} % Provides inclusion of graphics and a proper interface for '\in­clude­graph­ics'.
+% Su­per­sedes 'epsfig' and 'graphics'.
+
+\usepackage{enumitem} % Provides control over list environments. Supersedes 'enumerate', which gives enumerate environment an optional argument which determines the style in which the counter is printed.
+
+\let\newfloat\undefined % Hack to make floatrow work with memoir.
+\usepackage{floatrow} % Handles alignment of floats (figures), with centering as default.
+
+\usepackage{xspace} % Ugly hack that sometimes helps with otherwise missing spaces.
+
+\usepackage[disable,color=YellowGreen,textsize=tiny,shadow]{todonotes} % Todo notes.
+
+\usepackage[style=authoryear,backend=biber]{biblatex} % Bibliography.
+
+\usepackage{varioref} % Automatically locates references on other pages. Load before hyperref.
+
+\usepackage[pdfencoding=auto,pdfborderstyle={/S/U/W 1},linkbordercolor=DarkSlateBlue,colorlinks=true,linkcolor=DarkSlateBlue,citecolor=DarkOliveGreen,urlcolor=Maroon]{hyperref} % Clickable references.
+
+\usepackage[all]{hypcap} % Anchors links to the beginning of their respective floats. Load after hyperref.
+
+\usepackage[noabbrev,capitalize,nameinlink]{cleveref} % Names references automatically. Load after hyperref.
+
+\usepackage[toc]{glossaries} % Glossary.
 

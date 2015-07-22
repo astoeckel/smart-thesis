@@ -1,4 +1,4 @@
-TEX = pdflatex -interaction=nonstopmode
+TEX = max_print_line=1048576 pdflatex -interaction=nonstopmode
 MAIN = smart-thesis-demo
 BIB = biber
 IDX = makeglossaries

@@ -82,6 +82,7 @@
 %
 \usepackage[usenames,dvipsnames,svgnames]{xcolor}
 \usepackage[expansion=true,final]{microtype}
+\usepackage{ragged2e} % for marginnote
 
 %
 % FONT DEFINITIONS
@@ -178,9 +179,9 @@
 	\slshape\footnotesize
 	\checkoddpage
 	\ifoddpage
-		\raggedright
+		\RaggedRight
 	\else
-		\raggedleft
+		\RaggedLeft
 	\fi
 	{#1}
 }}

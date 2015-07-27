@@ -126,9 +126,18 @@
 % COLOR DEFINITIONS
 %
 
-\definecolor{halfgray}{gray}{0.55}
-\definecolor{webgreen}{rgb}{0,.5,0}
-\definecolor{webbrown}{rgb}{.6,0,0}
+\definecolor{smartgray}{gray}{0.55}
+\definecolor{smartred}{HTML}{800000}
+\definecolor{smartplum}{HTML}{47294F}
+\definecolor{smartblue}{HTML}{193A6B}
+\definecolor{smartorange}{HTML}{AA4C00}
+\definecolor{smartgreen}{HTML}{3C7705}
+\definecolor{smartbutter}{HTML}{A08300}
+
+\colorlet{heading}{smartgray}
+\colorlet{ref}{smartblue}
+\colorlet{cite}{smartgreen}
+\colorlet{url}{smartred}
 
 %
 % SECTIONING STYLES (toledo)
@@ -144,9 +153,9 @@
 
 	\renewcommand*{\chapterheadstart}{\vspace*{0.0cm}}
 
-	\renewcommand*{\chapnumfont}{\normalfont\color{halfgray}\addfontfeature{SizeFeatures={Size=110}}}
+	\renewcommand*{\chapnumfont}{\normalfont\color{heading}\addfontfeature{SizeFeatures={Size=110}}}
 	\newfont{\chapterNumber}{eurb10 scaled 7000}
-	\renewcommand*{\chapnumfont}{\chapterNumber\color{halfgray}}
+	\renewcommand*{\chapnumfont}{\chapterNumber\color{heading}}
 	\renewcommand*{\printchaptername}{}
 	\renewcommand*{\chapternamenum}{}
 	\renewcommand*{\printchapternum}{%
@@ -301,4 +310,5 @@
 \setulmargins{*}{*}{*}
 \setmarginnotes{0.8cm}{3.3cm}{1cm}
 \checkandfixthelayout
+
 

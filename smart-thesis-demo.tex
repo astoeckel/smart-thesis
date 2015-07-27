@@ -18,8 +18,6 @@
 % These packages are only used in the demo and not necessarily
 % required for smart-thesis.
 \usepackage{blindtext}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.8}
 
 % Loads bibliography for citations.
 \addbibresource{demo-bibliography.bib}
@@ -49,6 +47,23 @@
 
 \blindtext
 
+\begin{tikzpicture}
+   \begin{axis}
+      \addplot coordinates{(0,0) (1,2)};
+      \addplot coordinates{(0,1) (1,3)};
+      \addplot coordinates{(0,2) (1,4)};
+      \addplot coordinates{(0,3) (1,5)};
+      \addplot coordinates{(0,4) (1,6)};
+      \addplot coordinates{(0,5) (1,7)};
+   \end{axis}
+\end{tikzpicture}
+
+\begin{itemize}
+  \item{\color{smartred} Smart Red}
+  \item{\color{smartplum} Smart Plum}
+\end{itemize}
+
+
 \section{Some math}
 
 Here follows some tests for typesetting math. Note how we use the \texttt{\\marginnote} command to add some pretty notes which appear in the margin. This is quite nice, as it allows a more narrow width of the text body without the page looking too sparse\footnote{This is a footnote}.
@@ -68,7 +83,6 @@ m = 0,\dotsc,2n-1
 For of science, see \cite{botsch2010polygon}. Unfortunately, that book has nothing about \glspl{wolf}.
 
 \begin{figure}
-	\centering % @Jan: What package did you use for auto-centering of figures?
 	\begin{tikzpicture}
 		\begin{axis}[
 			axis lines=left,
@@ -84,7 +98,7 @@ For of science, see \cite{botsch2010polygon}. Unfortunately, that book has nothi
 		% density of Normal distribution:
 		\newcommand\MU{0}
 		\newcommand\SIGMA{0.1}
-		\addplot[red,domain=-3*\SIGMA:3*\SIGMA,samples=201]
+		\addplot+[mark=none,domain=-3*\SIGMA:3*\SIGMA,samples=201]
 		{exp(-(x-\MU)^2 / 2 / \SIGMA^2)
 			/ (\SIGMA * sqrt(2*pi))};
 		\end{axis}

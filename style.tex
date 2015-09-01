@@ -81,7 +81,6 @@
 % EXTERNAL PACKAGES
 %
 \usepackage[usenames,dvipsnames,svgnames]{xcolor}
-\usepackage[expansion=true,final]{microtype}
 \usepackage{ragged2e} % for marginnote
 
 %
@@ -90,6 +89,9 @@
 
 % Use the following code for XeLaTeX
 \ifxetex
+
+% Setup microtype for XeLaTeX
+\usepackage[final]{microtype}
 
 % Load the texgyrepagella font as main font and set the ``mathpazo'' font as
 % math font
@@ -104,19 +106,24 @@
 	]%
 	{texgyrepagella-regular.otf}
 \DeclareRobustCommand{\spacedallcaps}[1]{%
-	\addfontfeature{LetterSpace=15,WordSpace=1.25}{\MakeTextUppercase{#1}}%
+	\oldstylenums{\addfontfeature{LetterSpace=15,WordSpace=1.25}{\MakeTextUppercase{#1}}}%
 }%
 \DeclareRobustCommand{\spacedlowsmallcaps}[1]{%
-	\textsc{\addfontfeature{LetterSpace=15,WordSpace=1.25}{\MakeTextLowercase{#1}}}
+	\oldstylenums{\textsc{\addfontfeature{LetterSpace=15,WordSpace=1.25}{\MakeTextLowercase{#1}}}}%
 }%
 \fi
 
 % Use the following code for pdfLaTex
 \ifpdf
+
+% Setup microtype for pdfLaTex
+\usepackage[expansion=true,final]{microtype}
+
+
 \usepackage[sc]{mathpazo}
 
-\DeclareRobustCommand{\spacedallcaps}[1]{\textls[160]{\textsc{\MakeTextUppercase{#1}}}}%
-\DeclareRobustCommand{\spacedlowsmallcaps}[1]{\textls[80]{\textsc{\MakeTextLowercase{#1}}}}%
+\DeclareRobustCommand{\spacedallcaps}[1]{\textls[160]{\oldstylenums{\textsc{\MakeTextUppercase{#1}}}}}%
+\DeclareRobustCommand{\spacedlowsmallcaps}[1]{\textls[80]{\oldstylenums{\textsc{\MakeTextLowercase{#1}}}}}%
 \fi
 
 % Increase linespread for Palatino

@@ -91,7 +91,7 @@
 \ifxetex
 
 % Setup microtype for XeLaTeX
-\usepackage[final]{microtype}
+\usepackage[expansion=true,final]{microtype}
 
 % Load the texgyrepagella font as main font and set the ``mathpazo'' font as
 % math font
@@ -117,7 +117,7 @@
 \ifpdf
 
 % Setup microtype for pdfLaTex
-\usepackage[expansion=true,final]{microtype}
+\usepackage[final,tracking=true,kerning=true,spacing=true]{microtype}
 
 
 \usepackage[sc]{mathpazo}
@@ -284,7 +284,7 @@
 
 \footmarkstyle{\textsc{#1}}
 \setlength{\footmarkwidth}{-0.5em}
-\setlength{\footmarksep}{0em}
+\setlength{\footmarksep}{0.5em}
 \setlength{\footparindent}{0em}
 
 %

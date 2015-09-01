@@ -186,9 +186,9 @@
 	\setaftersecskip{4ex plus 1ex minus .2ex}
 
 	\setsubsecheadstyle{\itshape}
-	\renewcommand*{\thesubsection}{\spacedlowsmallcaps{\arabic{chapter}.\arabic{section}.\arabic{subsection}}}
 	\setbeforesubsecskip{-4ex plus -1ex minus -.2ex}
 	\setaftersubsecskip{4ex plus 1ex minus .2ex}
+	\setsecnumformat{\spacedlowsmallcaps{\csname the##1\endcsname\quad}}
 }
 \makeatother
 

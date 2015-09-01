@@ -179,6 +179,16 @@
 	\vspace*{.5\baselineskip}}
 	\renewcommand*{\chaptitlefont}{\normalfont\large}
 	\renewcommand*{\printchaptertitle}[1]{\chaptitlefont\spacedallcaps{##1}}
+
+	\setsecheadstyle{\spacedlowsmallcaps}
+	\setsecindent{-3.5ex}
+	\setbeforesecskip{-4ex plus -1ex minus -.2ex}
+	\setaftersecskip{4ex plus 1ex minus .2ex}
+
+	\setsubsecheadstyle{\itshape}
+	\renewcommand*{\thesubsection}{\spacedlowsmallcaps{\arabic{chapter}.\arabic{section}.\arabic{subsection}}}
+	\setbeforesubsecskip{-4ex plus -1ex minus -.2ex}
+	\setaftersubsecskip{4ex plus 1ex minus .2ex}
 }
 \makeatother
 

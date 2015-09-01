@@ -16,23 +16,27 @@
 
 \usepackage{xspace} % Ugly hack that sometimes helps with otherwise missing spaces.
 
-\usepackage[disable,color=YellowGreen,textsize=tiny,shadow]{todonotes} % Todo notes.
+\usepackage[color=YellowGreen,textsize=tiny,shadow]{todonotes} % Todo notes.
 
 \usepackage[style=authoryear,backend=biber]{biblatex} % Bibliography.
 
+\usepackage{algorithm} % Algorithms.
+
+\usepackage{algpseudocode} % Algorithms.
+
 \usepackage{varioref} % Automatically locates references on other pages. Load before hyperref.
 
-\usepackage[pdfencoding=auto,pdfborderstyle={/S/U/W 1},linkbordercolor=ref,colorlinks=true,linkcolor=ref,citecolor=cite,urlcolor=url]{hyperref} % Clickable references.
+\usepackage[pdfencoding=auto,pdfborderstyle={/S/U/W 1},linkbordercolor=ref,colorlinks,linkcolor=ref,citecolor=cite,urlcolor=url]{hyperref} % Clickable references.
 
 \usepackage[all]{hypcap} % Anchors links to the beginning of their respective floats. Load after hyperref.
 
 \usepackage[noabbrev,capitalize,nameinlink]{cleveref} % Names references automatically. Load after hyperref.
 
-\usepackage[toc]{glossaries} % Glossary.
+\usepackage[toc,acronym]{glossaries} % Glossary.
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.8}
-\pgfplotscreateplotcyclelist{exotic}{%
+\pgfplotscreateplotcyclelist{smart}{%
   smartplum,semithick,every mark/.append style={fill=smartplum!80!black},mark=*\\%
   smartgreen,semithick,every mark/.append style={fill=smartgreen!80!black},mark=square*\\%
   smartorange,semithick,every mark/.append style={fill=smartorange!80!black},mark=otimes*\\%
@@ -40,5 +44,5 @@
   smartbutter,semithick,every mark/.append style={fill=smartbutter!80!black},mark=diamond*\\%
   smartred,semithick,every mark/.append style={solid,fill=smartred!80!black},mark=*\\%
 }
-\pgfplotsset{cycle list name=exotic}
+\pgfplotsset{cycle list name=smart}
 

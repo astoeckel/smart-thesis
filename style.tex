@@ -145,6 +145,8 @@
 \colorlet{ref}{smartblue}
 \colorlet{cite}{smartgreen}
 \colorlet{url}{smartred}
+\colorlet{caption}{black}
+\colorlet{margincaption}{caption}
 
 %
 % SECTIONING STYLES (toledo)
@@ -199,6 +201,12 @@
 \chapterstyle{toledo}
 
 %
+% FIGURES
+%
+
+\captionnamefont{\color{caption}}
+
+%
 % MARGINNOTE
 %
 
@@ -214,6 +222,12 @@
 		\RaggedLeft
 	\fi
 	{#1}
+}}
+
+\newcommand{\marginfig}[3]{\marginnote{%
+	{#1}%
+	\par\refstepcounter{figure}\textcolor{margincaption}{Figure \thefigure}: {#2}%
+	#3%
 }}
 
 %

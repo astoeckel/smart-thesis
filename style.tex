@@ -174,11 +174,15 @@
 	\renewcommand*{\chapternamenum}{}
 	\renewcommand*{\afterchapternum}{}
 
-	\renewcommand*{\afterchaptertitle}{\vspace*{.4\baselineskip}%
+	\renewcommand*{\afterchaptertitle}{%
 	\par\parbox{\textwidth}{\hrulefill}\par%
 	\vspace*{4ex}}
 	\renewcommand*{\chaptitlefont}{\normalfont\large}
-	\renewcommand*{\printchaptertitle}[1]{\chaptitlefont\spacedallcaps{##1}}
+	\renewcommand*{\printchaptertitle}[1]{%
+		\parbox[b]{\textwidth}{%
+			\raggedright\chaptitlefont\spacedallcaps{##1}%
+		}%
+	}
 
 	\setsecheadstyle{\spacedlowsmallcaps}
 	\setsecindent{-3.5ex}

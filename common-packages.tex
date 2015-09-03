@@ -16,7 +16,10 @@
 
 \usepackage{xspace} % Ugly hack that sometimes helps with otherwise missing spaces.
 
-\usepackage[color=YellowGreen,textsize=tiny,shadow]{todonotes} % Todo notes.
+\usepackage[backgroundcolor=white,bordercolor=smartblue,textsize=tiny]{todonotes} % Todo notes.
+\makeatletter
+\renewcommand{\todo}[2][]{\@bsphack\@todo[#1]{\sffamily{#2}}\@esphack\ignorespaces}
+\makeatother
 
 \usepackage[style=authoryear,backend=biber]{biblatex} % Bibliography.
 

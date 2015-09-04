@@ -17,6 +17,8 @@
 \usepackage{xspace} % Ugly hack that sometimes helps with otherwise missing spaces.
 
 \usepackage[backgroundcolor=white,bordercolor=smartblue,textsize=tiny]{todonotes} % Todo notes.
+
+% Use sans-serif font in todos to clearly distinguish it from other text
 \makeatletter
 \renewcommand{\todo}[2][]{\@bsphack\@todo[#1]{\sffamily{#2}}\@esphack\ignorespaces}
 \makeatother

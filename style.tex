@@ -206,7 +206,8 @@
 % FIGURES
 %
 
-\captionnamefont{\color{caption}}
+\captionstyle{\small}
+\captionnamefont{\slshape\color{caption}}
 
 %
 % MARGINNOTE
@@ -215,8 +216,9 @@
 % Define the "marginnote" command. For compatibility reasons
 % we do not override marginpar.
 \strictpagecheck
-\newcommand{\marginnote}[1]{\marginpar{
+\newcommand{\marginnote}[1]{\hspace*{0pt}\marginpar{
 	\slshape\footnotesize
+	\vspace*{-0.725em}
 	\checkoddpage
 	\ifoddpage
 		\RaggedRight
@@ -224,13 +226,17 @@
 		\RaggedLeft
 	\fi
 	{#1}
-}}
+}\ignorespaces}
 
-\newcommand{\marginfig}[3]{\marginnote{%
+\newcommand{\marginfloat}[8]{\marginnote{%
 	{#1}%
-	\par\refstepcounter{figure}\textcolor{margincaption}{Figure \thefigure}: {#2}%
+	\par\refstepcounter{#4}\textcolor{margincaption}{#5 #6}: {#2}%
+	\addcontentsline{#7}{#4}{\protect\numberline {#6}{\ignorespaces #8}}
 	#3%
 }}
+
+\newcommand{\marginfig}[4]{\marginfloat{#2}{#3}{#4}{figure}{Figure}{\thefigure}{lof}{#1}}
+\newcommand{\margintbl}[4]{\marginfloat{#2}{#3}{#4}{table}{Table}{\thetable}{lot}{#1}}
 
 %
 % PAGE STYLE (headers, footers)

@@ -228,12 +228,9 @@
 	{#1}
 }\ignorespaces}
 
-\newcommand{\marginfloat}[8]{\marginnote{%
-	{#1}%
-	\par\refstepcounter{#4}\textcolor{margincaption}{#5 #6}: {#2}%
-	\addcontentsline{#7}{#4}{\protect\numberline {#6}{\ignorespaces #8}}
-	#3%
-}}
+\newcommand{\marginfloat}[8]{\marginnote{{#1}%
+\par\refstepcounter{#4}\textcolor{margincaption}{#5 #6}: {#2}#3}%
+\addcontentsline{#7}{#4}{\protect\numberline {#6}{\ignorespaces #8}}\ignorespaces}
 
 \newcommand{\marginfig}[4]{\marginfloat{#2}{#3}{#4}{figure}{Figure}{\thefigure}{lof}{#1}}
 \newcommand{\margintbl}[4]{\marginfloat{#2}{#3}{#4}{table}{Table}{\thetable}{lot}{#1}}

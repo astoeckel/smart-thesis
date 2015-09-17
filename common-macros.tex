@@ -1,10 +1,18 @@
 % Abbreviations
 \newcommand*{\eg}{e.\,g.\@\xspace}
-\newcommand*{\etc}{etc.\@\xspace}
+\newcommand*{\ie}{i.\,e.\@\xspace}
+\newcommand*{\cf}{cf.\@\xspace}
 \newcommand*{\etal}{et.\@ al.\@\xspace}
+%\newcommand*{\etc}{etc.\@\xspace}
+\makeatletter
+\newcommand*{\etc}{%
+  \@ifnextchar{.}%
+    {etc}%
+      {etc.\@\xspace}%
+}
+\makeatother
 
 % Sets
-\newcommand*{\C}{\mathbb{C}}
 \newcommand*{\R}{\mathbb{R}}
 \newcommand*{\Q}{\mathbb{Q}}
 \newcommand*{\Z}{\mathbb{Z}}
@@ -19,3 +27,8 @@
 % Stochastics
 \newcommand*{\probability}[1]{{\mathrm{Pr}\left({#1}\right)}}
 \newcommand*{\expectation}[1]{\left[{#1}\right]}
+
+% Optimization
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+

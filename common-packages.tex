@@ -25,7 +25,12 @@
 
 \usepackage[style=alphabetic,backend=biber]{biblatex} % Bibliography.
 
-\usepackage{algorithm} % Algorithms.
+%\usepackage{algorithm} % Algorithms.
+% Use default Memoir floats for algorithms
+\newcommand{\algorithmname}{Algorithm}
+\newcommand{\listalgorithmname}{List of Algorithms}
+\newlistof{listofalgorithms}{loa}{\listalgorithmname}
+\newfloat[chapter]{algorithm}{loa}{\algorithmname}
 
 \usepackage{algpseudocode} % Algorithms.
 

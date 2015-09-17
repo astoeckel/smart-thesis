@@ -14,3 +14,8 @@
 *.blg
 *.run.xml
 *.kate-swp
+*.acn
+*.acr
+*.alg
+*.kilepr
+

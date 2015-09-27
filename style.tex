@@ -217,6 +217,22 @@
 % MARGINNOTE
 %
 
+%
+% There are three commands for placing elements in the margin:
+%
+% \marginnote{<TEXT>}
+% Just like \marginpar but with correct formating
+%
+% \marginfig{<SHORT CAPTION>}{<FIGURE CONTENT>}{<LONG CAPTION>}{\label{<LABEL>}}
+% \margintbl{<SHORT CAPTION>}{<TABLE CONTENT>}{<LONG CAPTION>}{\label{<LABEL>}}
+% Places a figure/table in the margin
+% - <SHORT CAPTION> is the caption as it occurs in the list of figures/tables
+% - <FIGURE CONTENT>/<TABLE CONTENT> is the actual figure/table content
+% - <LONG CAPTION> is the caption beneath the figure
+% - <LABEL> is the label -- we decided to let you explicitly type "\label" here
+% as this allows LaTeX editors to index the label and provide auto completion.
+%
+
 % Define the "marginnote" command. For compatibility reasons
 % we do not override marginpar.
 \strictpagecheck

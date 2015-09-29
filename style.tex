@@ -237,15 +237,17 @@
 % we do not override marginpar.
 \strictpagecheck
 \newcommand{\marginnote}[1]{\hspace*{0pt}\marginpar{
-	\slshape\footnotesize
-	\vspace*{-0.725em}
-	\checkoddpage
-	\ifoddpage
-		\RaggedRight
-	\else
-		\RaggedLeft
-	\fi
-	{#1}
+	\microtypesetup{disable}%
+	\slshape\footnotesize%
+	\vspace*{-0.725em}%
+	\checkoddpage%
+	\ifoddpage%
+		\RaggedRight%
+	\else%
+		\RaggedLeft%
+	\fi%
+	{#1}%
+	\microtypesetup{enable}%
 }\ignorespaces}
 
 \newcommand{\marginfloat}[8]{\marginnote{{#1}%

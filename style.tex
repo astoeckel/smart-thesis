@@ -198,6 +198,8 @@
 	\setaftersubsecskip{4ex plus 1ex minus .2ex}
 	\setsecnumformat{\spacedlowsmallcaps{\csname the##1\endcsname\quad}}
 
+%	\setparaheadstyle{\normalsize\itshape}
+
 	\renewcommand*{\abstractnamefont}{\spacedlowsmallcaps}
 }
 \makeatother
@@ -228,7 +230,7 @@
 % Places a figure/table in the margin
 % - <SHORT CAPTION> is the caption as it occurs in the list of figures/tables
 % - <FIGURE CONTENT>/<TABLE CONTENT> is the actual figure/table content
-% - <LONG CAPTION> is the caption beneath the figure
+% - <LONG CAPTION> is the caption below the figure
 % - <LABEL> is the label -- we decided to let you explicitly type "\label" here
 % as this allows LaTeX editors to index the label and provide auto completion.
 %
@@ -348,14 +350,20 @@
 
 % Style the epigraph itself -- use italic text and
 % flush it to the right
-\newenvironment{epigraphstyle}{\slshape\raggedleft}{}
+\newenvironment{epigraphstyle}{
+	\microtypesetup{disable}%
+	\small\slshape%
+	\RaggedLeft%
+}{%
+	\microtypesetup{enable}%
+}
 \epigraphtextposition{epigraphstyle}
 
 % Style the epigraph source -- prepend it with a em-dash
 % and make sure no indentation is added after the epigraph
 \newenvironment{epigraphsourcestyle}%
-{%
-	--- \raggedleft%
+{%#
+	--- \small\raggedleft\color{smartred}%
 }{%
 	\@afterindentfalse\@afterheading%
 }

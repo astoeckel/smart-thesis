@@ -31,6 +31,12 @@
 \newcommand{\listalgorithmname}{List of Algorithms}
 \newlistof{listofalgorithms}{loa}{\listalgorithmname}
 \newfloat[chapter]{algorithm}{loa}{\algorithmname}
+\newfixedcaption{\falgcaption}{algorithm}
+\newlistentry[chapter]{algorithm}{loa}{0}
+\cftsetindents{algorithm}{0em}{2.3em}
+\makeatletter
+\g@addto@macro\insertchapterspace{\addtocontents{loa}{\protect\addvspace{10pt}}}
+\makeatother
 
 \usepackage{algpseudocode} % Algorithms.
 

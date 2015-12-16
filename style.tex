@@ -217,6 +217,25 @@
 \newsubfloat{table}% Create subfloat in table environment
 
 %
+% ACKNOWLEDGEMENT
+%
+
+\makeatletter
+\newcommand{\acknowledgementname}{Acknowledgements}
+\newenvironment{acknowledgement}{%
+  \setup@bstract
+  \if@bsrunin\else
+    \ifnumber@bs \num@bs \else
+      \begin{\absnamepos}\abstractnamefont\acknowledgementname\end\absnamepos%
+      \vspace{\abstitleskip}%
+    \fi
+  \fi
+  \put@bsintoc%
+  \begin{@bstr@ctlist}\if@bsrunin\@bsrunintitle\fi\abstracttextfont}%
+  {\par\end{@bstr@ctlist}}
+\makeatother
+
+%
 % MARGINNOTE
 %
 

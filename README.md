@@ -11,6 +11,7 @@ achieving a higher compatibility with other LaTeX packages. Large parts of
 the code have been adapted (ransacked) from André Miedes code.
 
 You can find more information about "classicthesis" at CTAN: https://www.ctan.org/pkg/classicthesis
+
 More information about the "memoir" package can be found here: https://www.ctan.org/pkg/memoir
 
 Usage

@@ -424,6 +424,57 @@
 \makeatother
 
 %
+% TITLEPAGE
+%
+
+\makeatletter
+\newcommand\thesistype[1]{\renewcommand\@thesistype{#1}}
+\newcommand\@thesistype{}
+
+\newcommand\discipline[1]{\renewcommand\@discipline{#1}}
+\newcommand\@discipline{}
+
+\newcommand\institution[1]{\renewcommand\@institution{#1}}
+\newcommand\@institution{}
+
+\newcommand\supervisors[1]{\renewcommand\@supervisors{#1}}
+\newcommand\@supervisors{}
+
+\newcommand\internalid[1]{\renewcommand\@internalid{#1}}
+\newcommand\@internalid{}
+
+\newcommand{\applytolist}[3][{,\\\vspace{0.1cm}}]{%
+	\def\nextitem{\def\nextitem{#1}}%
+	\@for \el:=#3\do{\nextitem{#2{\el}}}%
+}
+
+\newcommand{\smarttitle}{
+{\begingroup
+\thispagestyle{empty}
+\makeatletter
+\raggedright
+\vfill
+{\LARGE \spacedallcaps{\@thesistype} \\}
+{\Large \spacedlowsmallcaps{\@discipline}\\}
+\vfill
+{\Huge \textcolor{smartred}{\spacedallcaps{\@title}}\\}
+\vfill
+{\LARGE \applytolist{\spacedallcaps}{\@author}\\}
+\vfill
+{\Large \applytolist{\itshape}{\@institution}}
+\vfill
+{\Large \spacedlowsmallcaps{Supervised by}\\}
+\vspace{0.1cm}
+{\large \applytolist{\spacedallcaps}{\@supervisors}}
+\vfill
+\vfill
+{\Large \spacedlowsmallcaps{\@date} \hfill \spacedlowsmallcaps{\@internalid}}
+\vfill
+\makeatother
+\endgroup}}
+
+\makeatletter
+%
 % PAGE LAYOUT
 %
 \settypeblocksize{23.45cm}{11.85cm}{*}

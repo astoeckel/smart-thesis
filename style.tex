@@ -240,6 +240,31 @@
   \put@bsintoc%
   \begin{@bstr@ctlist}\if@bsrunin\@bsrunintitle\fi\abstracttextfont}%
   {\par\end{@bstr@ctlist}}
+
+\newcommand{\smartcopyright}[1]{\begingroup%
+	\pagebreak%
+	\thispagestyle{empty}%
+	\footnotesize%
+	\par\vspace*{\fill}%
+	\hspace{-1.1cm}%
+	\parbox{10cm}{%
+		\noindent%
+		Copyright \textcopyright\ \the\year\ \applytolist[, ]{}{\@author}\\[0.5cm]%
+		{#1}%
+	}%
+\endgroup}
+
+\newcommand{\smartinitialepigraph}[2]{\begingroup
+	\cleardoublepage
+	\thispagestyle{empty}
+	\vspace*{2cm}
+	\epigraph{#1}{#2}
+	\cleardoublepage
+\endgroup}
+
+\let\oldepigraph\epigraph
+\renewcommand{\epigraph}[2]{\oldepigraph{#1}{\spacedlowsmallcaps{#2}}}
+
 \makeatother
 
 %

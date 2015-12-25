@@ -29,16 +29,25 @@
 \makeglossaries
 \input{demo-glossary}
 
-\title{Smart Thesis Demo}
-\author{Jan Philip Göpfert, Andreas Stöckel}
+% Define all the metadata to be listed in \smarttitle and \smartcopyright
+\thesistype{Master Thesis}
+\discipline{Intelligent Systems}
+\title{A Truly Magnificent Demo of the \LaTeX\ Smart Thesis Template With Respect to Long Titles and Incredibly Fascinating Blindtext}
+\author{Jan Philip Göpfert,Andreas Stöckel}
+\institution{University of GNU,Faculty of Templates,\TeX\ Group}
+\supervisors{Prof.\@~Dr.-Ing.\@~Jane Doe,M.Sc.\@~John Doe}
+\internalid{M13}
 
 \begin{document}
 
 \frontmatter
 
-\begin{titlingpage}
-  \maketitle
-\end{titlingpage}
+\smarttitle
+
+\smartcopyright{This LaTeX template is published under the Creative Commons Zero license. To the extent possible under law, the authors have waived all copyright and
+related neighboring rights to Smart Thesis. This work is published from: Germany.}
+
+\smartinitialepigraph{The secret of getting ahead is getting started.}{Mark Twain}
 
 \tableofcontents
 
@@ -50,42 +59,44 @@
 
 \blindtext
 
-\begin{tikzpicture}
-   \begin{axis}
-      \addplot coordinates{(0,0) (1,2)};
-      \addplot coordinates{(0,1) (1,3)};
-      \addplot coordinates{(0,2) (1,4)};
-      \addplot coordinates{(0,3) (1,5)};
-      \addplot coordinates{(0,4) (1,6)};
-      \addplot coordinates{(0,5) (1,7)};
-   \end{axis}
-\end{tikzpicture}
-
-\begin{itemize}
-  \item{\color{smartred} Smart Red}
-  \item{\color{smartplum} Smart Plum}
-\end{itemize}
-
+\begin{figure}
+    \small
+    \centering
+    \begin{tikzpicture}
+       \begin{axis}
+          \addplot coordinates{(0,0) (1,2)};
+          \addplot coordinates{(0,1) (1,3)};
+          \addplot coordinates{(0,2) (1,4)};
+          \addplot coordinates{(0,3) (1,5)};
+          \addplot coordinates{(0,4) (1,6)};
+          \addplot coordinates{(0,5) (1,7)};
+       \end{axis}
+    \end{tikzpicture}
+    \caption{Just a fancy test for auto-coloring of graphs}
+\end{figure}
 
 \section{Some math}
 
-Here follows some tests for typesetting math. Note how we use the \texttt{\\marginnote} command to add some pretty notes which appear in the margin. This is quite nice, as it allows a more narrow width of the text body without the page looking too sparse\footnote{This is a footnote}.
 \marginnote{This formula is also known as \emph{Pythagorean Theorem}, albeit it is usually written with the variables $a$, $b$, and $c$.}
+Here follows some tests for typesetting math. Note how we use the \texttt{\\marginnote} command to add some pretty notes which appear in the margin. This is quite nice, as it allows a more narrow width of the text body without the page looking too sparse\footnote{This is a footnote}. Here comes our first equation
 \begin{align}
   z^2 &= x^2 + y^2 \\
-  z &= \sqrt{x^2 + y^2}
+  z &= \sqrt{x^2 + y^2} \,.
 \end{align}
+
+\pagebreak
 \marginnote{Did you know? The discrete fourier transformation shown in equation \ref{eqn:dft} is the backbone of the modern information-society.}
-And here comes some more\footnote{More is always better!}:
+And here comes some more math, this time a discrete Fourier transformation (DFT)  which is a little bit more sophisticated than the last example\footnote{More is always better!}:
 \begin{align}
 	f_m =  \sum_{k=0}^{2n-1} x_k \, e^{-\frac{2\pi i}{2n} mk } \label{eqn:dft}
 \qquad
-m = 0,\dotsc,2n-1
+m = 0,\dotsc,2n-1 \,.
 \end{align}
-
-For of science, see \cite{botsch2010polygon}. Unfortunately, that book has nothing about \glspl{wolf}.
+For words of science, see \cite{botsch2010polygon}. Unfortunately, that book has nothing about \glspl{wolf}.
 
 \begin{figure}
+	\small
+	\centering
 	\begin{tikzpicture}
 		\begin{axis}[
 			axis lines=left,
@@ -113,26 +124,48 @@ For of science, see \cite{botsch2010polygon}. Unfortunately, that book has nothi
 
 \section{Even more tests}
 
+\marginnote{Blood-red were his spurs i' the golden noon; wine-red was his velvet coat, when they shot him down on the highway, down like a dog on the highway, and he lay in his blood on the highway, with the bunch of lace at his throat.}
 \blindtext
 
 \subsection{A test of three parts}
-
-\marginnote{Blood-red were his spurs i' the golden noon; wine-red was his velvet coat, when they shot him down on the highway, down like a dog on the highway, and he lay in his blood on the highway, with the bunch of lace at his throat.}
 
 \blindtext
 
 \chapter{Another test chapter}
 
+\begin{algorithm}
+	\small
+	\begin{shaded}
+		\begin{algorithmic}[1]
+			\newcommand*{\To}{\textbf{to}\xspace}
+			\newcommand*{\Init}{\State\textbf{init}\xspace}
+			\newcommand*{\B}{\mathcal{B}}
+			\Init \(M \gets 0 \in \B^{N \times r}\) \Comment{Result matrix}
+			\For{ \(i \gets 1\) \To N}
+				\For{ \(j \gets r - r_1 + 1\) \To \(r\)}
+					\State \(\ell \gets \) \Call{RandomSelect}{$\{1, \ldots, j - 1\}$} \Comment{Uniformly select set entry}
+					\If{\({M}[i,\ell] = 1\)}
+						\State \({M}[i,j] \gets 1\)
+					\Else
+						\State \({M}[i,\ell] \gets 1\)
+					\EndIf
+				\EndFor
+			\EndFor
+		\end{algorithmic}
+	\end{shaded}
+	\caption[Uncorrelated random data generation]{Algorithm for the generation of a block $M$ of $N$ uncorrelated random vectors of length $r$, containing exactly $r_1$ ones.}
+	\label{alg:binam_random_data}
+\end{algorithm}
+
 \epigraph{To test is to live. To believe is to die.}{Anonymous Heretic}
-
 \marginnote{Yes, this is just a test. If you read this, you are most likely doomed.}
-
 \blindtext
 
 \begin{figure}
-  \includegraphics[width=8cm]{demo}
-  \caption{Truly a fine canister, comparable only to \gls{mjollnir}.}
-  \label{fig:canister}
+    \centering
+    \includegraphics[width=8cm]{demo}
+    \caption{Truly a fine canister, comparable only to \gls{mjollnir}.}
+    \label{fig:canister}
 \end{figure}
 
 \Blindtext\Blindtext
@@ -142,20 +175,15 @@ A picture says more than a thousand words (see \ref{fig:canister}).
 \section{The Throat of the World}
 
 \marginnote{Margin notes help to add structure to long runs of text}
-
 \blindtext
-
-\marginnote{Here we start testing various types of lists}
 
 \blindlistlist[2]{itemize}
 
 \section{The Silence Has Been Broken}
 
-\marginnote{\blindtext}\blindtext
+\marginnote{Test test test}\blindtext
 
 \blindlistlist[2]{enumerate}
-
-\blindtext
 
 \section{Discerning the Transmundane}
 
@@ -163,7 +191,6 @@ A picture says more than a thousand words (see \ref{fig:canister}).
 \begin{align*}
 \sum_{i=1}^{n} i &= n \cdot \frac{n + 1}2
 \end{align*}}
-
 \blindtext
 
 \subsection{Composure, Speed, and Precision}
@@ -172,7 +199,6 @@ A picture says more than a thousand words (see \ref{fig:canister}).
 \begin{align*}
 E &= mc^2
 \end{align*}}
-
 \blindtext
 
 \backmatter

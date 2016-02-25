@@ -91,7 +91,7 @@
 \ifxetex
 
 % Setup microtype for XeLaTeX
-\usepackage[expansion=true,final]{microtype}
+\usepackage[expansion=false,final]{microtype}
 
 % Load the texgyrepagella font as main font and set the ``mathpazo'' font as
 % math font
@@ -102,7 +102,8 @@
 		BoldFont       = texgyrepagella-bold.otf,
 		ItalicFont     = texgyrepagella-italic.otf,
 		BoldItalicFont = texgyrepagella-bolditalic.otf,
-		Numbers={OldStyle}
+		Numbers        = {OldStyle},
+		Ligatures      = TeX
 	]%
 	{texgyrepagella-regular.otf}
 \DeclareRobustCommand{\spacedallcaps}[1]{%

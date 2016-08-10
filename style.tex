@@ -106,11 +106,21 @@
 		Ligatures      = TeX
 	]%
 	{texgyrepagella-regular.otf}
+
+% Define a new 'widespaced' font that is used in section headings
+% or chapter titles. For backwards compatibility reasons this uses
+% the old calling convention \newfontfamily\fontname[<options>{font}
+% instead of the newer \newfontfamily\fontname{font}[<options>]
+\newfontfamily\widespaced[%
+	LetterSpace=15,%
+	WordSpace={1.25, 1.25, 1.25}%
+]{texgyrepagella-regular.otf}%
+
 \DeclareRobustCommand{\spacedallcaps}[1]{%
-	\oldstylenums{\addfontfeature{LetterSpace=15,WordSpace=1.25}{\MakeTextUppercase{#1}}}%
+	{\widespaced\oldstylenums{\MakeTextUppercase{#1}}}%
 }%
 \DeclareRobustCommand{\spacedlowsmallcaps}[1]{%
-	\oldstylenums{\textsc{\addfontfeature{LetterSpace=15,WordSpace=1.25}{\MakeTextLowercase{#1}}}}%
+	{\widespaced\oldstylenums{\textsc{\MakeTextLowercase{#1}}}}%
 }%
 \fi
 

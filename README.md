@@ -14,6 +14,15 @@ You can find more information about "classicthesis" at CTAN: https://www.ctan.or
 
 More information about the "memoir" package can be found here: https://www.ctan.org/pkg/memoir
 
+Documents made with Smart Thesis
+--------------------------------
+
+Here is a list of theses typeset with Smart Thesis:
+* ["Design Space Exploration of Associative Memories using Spiking Neurons with Respect to Neuromorphic Hardware Implementations"](https://pub.uni-bielefeld.de/download/2902952/2902953) ([GitHub](https://github.com/hbp-unibi/master-thesis-astoeckel-2015))
+* ["Bioinformatics methods for the genetic and molecular characterisation of cancer"](http://scidok.sulb.uni-saarland.de/volltexte/2016/6703/pdf/dissertation.pdf)
+
+Feel free to open a pull-request if you'd like to add your document to this list.
+
 Usage
 -----
 
@@ -36,6 +45,13 @@ You can then use it like
 See the included demo document for more usage examples. You can find a selection of useful
 packages and macros in the `common_packages.tex` and `common_macros.tex` files. Their inclusion
 is fully optional.
+
+To build the demo document you can either run `latexmk` within the `smart-thesis` folder (which is the recommended strategy for building LaTeX documents)
+```sh
+latexmk demo
+```
+or alternatively, just run `make`, which will invoke `latexmk` for you if it is installed on your system. Otherwise `make` will just run `pdflatex` and `biber` multiple times.
+
 
 Authors
 -------

@@ -301,6 +301,7 @@
 % we do not override marginpar.
 \strictpagecheck
 \newcommand{\marginnote}[1]{\hspace*{0pt}\marginpar{
+  \parbox[b]{\marginparwidth}{
 	\microtypesetup{disable}%
 	\slshape\footnotesize%
 	\vspace*{-0.725em}%
@@ -312,6 +313,7 @@
 	\fi%
 	{#1}%
 	\microtypesetup{enable}%
+  }
 }\ignorespaces}
 
 \newcommand{\marginfloat}[8]{\marginnote{{#1}%

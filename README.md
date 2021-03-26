@@ -38,7 +38,7 @@ You can then use it like
     
     \input{smart-thesis/style}
     
-    \begin{documnet}
+    \begin{document}
         % Your document here
     \end{document}
 ````
